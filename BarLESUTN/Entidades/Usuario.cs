@@ -47,6 +47,18 @@ namespace Entidades
             return false;   
         }
 
+        public bool CheckUsuario(string usuario)
+        {
+            if(usuario is not null)
+            {
+                if(usuario == this.usuario)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
     }
 }

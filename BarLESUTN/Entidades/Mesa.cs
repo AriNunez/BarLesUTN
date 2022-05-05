@@ -12,6 +12,11 @@ namespace Entidades
         private bool ocupada;
         private bool esBarra;
 
-        
+        public Mesa(bool ocupada,bool esBarra)
+        {
+            this.cliente = null;
+            this.ocupada = ocupada;
+            this.esBarra = esBarra;
+        }
     }
 }
