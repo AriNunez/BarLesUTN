@@ -10,14 +10,14 @@ namespace Entidades
     public static class Bar
     {
         private static List<Cliente> listaClientes;
-        private static List<Producto> listaProductos;
+        private static Dictionary<Producto,int> listaProductos;
         private static List<Usuario> listaUsuarios;
         private static Mesa[] listaMesas;
 
         static Bar()
         {
             listaClientes = new List<Cliente>();
-            listaProductos = new List<Producto>();
+            listaProductos = new Dictionary<Producto, int> { };
             listaUsuarios = new List<Usuario>();
             listaMesas = new Mesa[20];
 
@@ -27,7 +27,8 @@ namespace Entidades
 
         public static void CargarUsuarios()
         {
-            listaUsuarios.Add(new Usuario("admin","admin",1000,"admin","admin",true));
+            listaUsuarios.Add(new Usuario("admin","admin",0,"admin","admin",true));
+            listaUsuarios.Add(new Usuario("Ariel","Nunez",41450812,"arielnunez","123123",false));
         }
         public static void CargarMesasYBarras()
         {
