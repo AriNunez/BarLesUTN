@@ -8,14 +8,20 @@ namespace Entidades
 {
     public abstract class Producto
     {
+        protected enum ETamanio 
+        { 
+            Chica,Mediana,Grande
+        }
+        
+
         private static int idAutoincremental;
         private int id;
         private string descripcion;
-        private decimal precio;
+        private decimal precioUnitario;
 
         protected int Id { get { return id; } }
         protected string Descripcion { get { return descripcion; } }
-        protected decimal Precio { get { return precio; } }
+        protected decimal PrecioUnitario { get { return precioUnitario; } }
 
         static Producto()
         {
@@ -29,14 +35,14 @@ namespace Entidades
         protected Producto(string descripcion, decimal precio):this()
         {
             this.descripcion = descripcion;
-            this.precio = precio;
+            this.precioUnitario = precio;
         }
 
         public void ModificarPrecio(decimal precio)
         {
             if (precio > 0)
             {
-                this.precio = precio;
+                this.precioUnitario = precio;
             }
         }
 
