@@ -17,8 +17,7 @@ namespace UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FormLogin frmLogin = new FormLogin();
-            Application.Run(frmLogin);
+            Application.Run(new FormLogin());
         }
     }
 }

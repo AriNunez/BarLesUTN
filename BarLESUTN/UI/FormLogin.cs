@@ -23,23 +23,21 @@ namespace UI
             string usuario = txtUsuario.Text;
             string password = txtPassword.Text;
 
-            if (usuario is not null && password is not null)
+            if (!String.IsNullOrEmpty(usuario) && !String.IsNullOrEmpty(password))
             {
-                if(Bar.LoginUsuario(usuario, password))
+                Usuario usuarioLogueado = Bar.LoginUsuario(usuario, password);
+                if (usuarioLogueado is not null)
                 {
-                    FormMenuPrincipal frmMenuPrincipal = new FormMenuPrincipal(this);
+                    FormMenuPrincipal frmMenuPrincipal = new FormMenuPrincipal(this,usuarioLogueado);
                     frmMenuPrincipal.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o password invalido", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o password incorrectos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     SetValoresVacios();
                 }
-
-
             }
-
         }
 
 

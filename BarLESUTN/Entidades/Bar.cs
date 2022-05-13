@@ -12,7 +12,7 @@ namespace Entidades
         private static List<Cliente> listaClientes;
         private static Dictionary<Producto,int> listaProductos;
         private static List<Usuario> listaUsuarios;
-        private static Mesa[] listaMesas;
+        public static Mesa[] listaMesas;
 
         static Bar()
         {
@@ -23,29 +23,36 @@ namespace Entidades
 
             CargarUsuarios();
             CargarMesasYBarras();
+            CargarProductos();
         }
 
-        public static void CargarUsuarios()
+        private static void CargarUsuarios()
         {
             listaUsuarios.Add(new Usuario("admin","admin",0,"admin","admin",true));
             listaUsuarios.Add(new Usuario("Ariel","Nunez",41450812,"arielnunez","123123",false));
         }
-        public static void CargarMesasYBarras()
+        private static void CargarMesasYBarras()
         {
             for (int i = 0; i < listaMesas.Length; i++)
             {
                 if (i < 15)
                 {
-                    listaMesas[i] = new Mesa(false,false);
+                    listaMesas[i] = new Mesa((i+1),false,false);
                 }
                 else
                 {
-                    listaMesas[i] = new Mesa(false,true);
+                    listaMesas[i] = new Mesa((i+1),false,true);
                 }
             }
         }
 
-        public static bool LoginUsuario(string usuario,string password)
+        private static void CargarProductos()
+        {
+            listaProductos.Add(new Comida("Hamburguesa con cheddar y panceta",500.00M,Comida.EPorcion.Individual),100);
+            listaProductos.Add(new Bebida("Cervesa Artenasal IPA Blest",250.00M,Bebida.EEnvase.Lata),50);
+        }
+
+        public static Usuario LoginUsuario(string usuario,string password)
         {
             if(usuario is not null && password is not null)
             {
@@ -53,11 +60,24 @@ namespace Entidades
                 {
                     if(item.CheckUsuario(usuario) && item.CheckPassword(password))
                     {
-                        return true;
+
+                        return item;
                     }
                 }
             }   
-            return false;
+            return null;
+        }
+
+        public static Dictionary<int,bool> EstadoMesas()
+        {
+            Dictionary<int,bool> estadoMesas = new Dictionary<int,bool>();
+
+            for (int i = 0; i < listaMesas.Length; i++)
+            {
+                estadoMesas.Add(i + 1, listaMesas[i].Ocupada);
+            }
+
+            return estadoMesas;
         }
     }
 }

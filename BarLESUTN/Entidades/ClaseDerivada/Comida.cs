@@ -8,6 +8,15 @@ namespace Entidades
 {
     public class Comida : Producto
     {
+        public enum EPorcion
+        {
+            Individual, ParaCompartir
+        }
+        private EPorcion tipoPorcion;
 
+        public Comida(string descripcion, decimal precio, EPorcion tipoPorcion) : base(descripcion, precio)
+        {
+            this.tipoPorcion = tipoPorcion;
+        }
     }
 }

@@ -13,5 +13,10 @@ namespace Entidades
             Lata,BotellaGrande,BotellaChica
         }
         private EEnvase tipoEnvase;
+
+        public Bebida(string descripcion, decimal precio,EEnvase tipoEnvase):base(descripcion,precio)
+        {
+            this.tipoEnvase = tipoEnvase;
+        }
     }
 }
