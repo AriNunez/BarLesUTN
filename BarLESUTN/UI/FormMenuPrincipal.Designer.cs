@@ -33,7 +33,7 @@
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.bntInventario = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctLogo = new System.Windows.Forms.PictureBox();
             this.btnMesa1 = new System.Windows.Forms.Button();
             this.btnMesa2 = new System.Windows.Forms.Button();
             this.btnMesa3 = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.pnlMesas = new System.Windows.Forms.Panel();
             this.lblUsuarioLogueado = new System.Windows.Forms.Label();
             this.pnlOpciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.pnlMesasBarras.SuspendLayout();
             this.pnlBarras.SuspendLayout();
             this.pnlMesas.SuspendLayout();
@@ -74,7 +74,7 @@
             this.pnlOpciones.Controls.Add(this.btnEmpleados);
             this.pnlOpciones.Controls.Add(this.btnCerrarSesion);
             this.pnlOpciones.Controls.Add(this.bntInventario);
-            this.pnlOpciones.Controls.Add(this.pictureBox1);
+            this.pnlOpciones.Controls.Add(this.pctLogo);
             this.pnlOpciones.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlOpciones.Location = new System.Drawing.Point(0, 0);
             this.pnlOpciones.Name = "pnlOpciones";
@@ -150,17 +150,17 @@
             this.bntInventario.Text = "Inventario";
             this.bntInventario.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // pctLogo
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::UI.Properties.Resources.logo_utn;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pctLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pctLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pctLogo.Image = global::UI.Properties.Resources.logo_utn;
+            this.pctLogo.Location = new System.Drawing.Point(0, 0);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(200, 75);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctLogo.TabIndex = 0;
+            this.pctLogo.TabStop = false;
             // 
             // btnMesa1
             // 
@@ -506,7 +506,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.pnlOpciones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.pnlMesasBarras.ResumeLayout(false);
             this.pnlMesasBarras.PerformLayout();
             this.pnlBarras.ResumeLayout(false);
@@ -545,7 +545,7 @@
         private System.Windows.Forms.Panel pnlBarras;
         private System.Windows.Forms.Panel pnlMesas;
         private System.Windows.Forms.Button bntInventario;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnSinAsignar;
         private System.Windows.Forms.Button btnEmpleados;

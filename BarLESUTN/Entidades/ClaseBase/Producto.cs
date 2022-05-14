@@ -8,16 +8,10 @@ namespace Entidades
 {
     public abstract class Producto
     {
-        protected enum ETamanio 
-        { 
-            Chica,Mediana,Grande
-        }
-        
-
         private static int idAutoincremental;
-        private int id;
-        private string descripcion;
-        private decimal precioUnitario;
+        protected int id;
+        protected string descripcion;
+        protected decimal precioUnitario;
 
         protected int Id { get { return id; } }
         protected string Descripcion { get { return descripcion; } }

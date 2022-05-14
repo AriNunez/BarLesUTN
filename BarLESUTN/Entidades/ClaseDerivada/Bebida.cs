@@ -8,15 +8,16 @@ namespace Entidades
 {
     public class Bebida : Producto
     {
-        public enum EEnvase
+        public enum EFormato
         {
-            Lata,BotellaGrande,BotellaChica
+            Lata,Botella,Pinta
         }
-        private EEnvase tipoEnvase;
 
-        public Bebida(string descripcion, decimal precio,EEnvase tipoEnvase):base(descripcion,precio)
+        private EFormato tipoFormato;
+
+        public Bebida(string descripcion, decimal precio,EFormato tipoFormato):base(descripcion,precio)
         {
-            this.tipoEnvase = tipoEnvase;
+            this.tipoFormato = tipoFormato;
         }
     }
 }

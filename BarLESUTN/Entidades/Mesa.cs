@@ -39,7 +39,7 @@ namespace Entidades
         
         public void AsignarCliente(Cliente cliente)
         {
-            if(this.cliente is null && cliente is not null)
+            if(this.cliente is null && cliente is not null && ocupada == false)
             {
                 this.cliente = cliente;
             }
