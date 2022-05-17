@@ -18,5 +18,7 @@ namespace Entidades
         {
             this.tipoFormato = tipoFormato;
         }
+
+        public override string Formato { get { return tipoFormato.ToString(); } }
     }
 }

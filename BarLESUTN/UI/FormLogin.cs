@@ -51,5 +51,22 @@ namespace UI
             txtUsuario.Text = String.Empty;
             txtPassword.Text = String.Empty;
         }
+
+        private void btnAutocompletarEmpleado_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Text = "arielnunez";
+            txtPassword.Text = "123123";
+        }
+
+        private void btnAutocompletarAdmin_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Text = "admin";
+            txtPassword.Text = "admin";
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

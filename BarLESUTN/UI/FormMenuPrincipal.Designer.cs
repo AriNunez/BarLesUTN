@@ -76,6 +76,7 @@
             this.pnlOpciones.Controls.Add(this.bntInventario);
             this.pnlOpciones.Controls.Add(this.pctLogo);
             this.pnlOpciones.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlOpciones.ForeColor = System.Drawing.Color.Black;
             this.pnlOpciones.Location = new System.Drawing.Point(0, 0);
             this.pnlOpciones.Name = "pnlOpciones";
             this.pnlOpciones.Size = new System.Drawing.Size(200, 505);
@@ -149,6 +150,7 @@
             this.bntInventario.TabIndex = 1;
             this.bntInventario.Text = "Inventario";
             this.bntInventario.UseVisualStyleBackColor = false;
+            this.bntInventario.Click += new System.EventHandler(this.bntInventario_Click);
             // 
             // pctLogo
             // 
@@ -404,13 +406,13 @@
             // 
             // pnlMesasBarras
             // 
-            this.pnlMesasBarras.BackColor = System.Drawing.Color.Silver;
+            this.pnlMesasBarras.BackColor = System.Drawing.Color.Transparent;
             this.pnlMesasBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMesasBarras.Controls.Add(this.label2);
             this.pnlMesasBarras.Controls.Add(this.label1);
             this.pnlMesasBarras.Controls.Add(this.pnlBarras);
             this.pnlMesasBarras.Controls.Add(this.pnlMesas);
-            this.pnlMesasBarras.ForeColor = System.Drawing.Color.Transparent;
+            this.pnlMesasBarras.ForeColor = System.Drawing.Color.White;
             this.pnlMesasBarras.Location = new System.Drawing.Point(307, 75);
             this.pnlMesasBarras.Name = "pnlMesasBarras";
             this.pnlMesasBarras.Size = new System.Drawing.Size(656, 372);
@@ -419,9 +421,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Silver;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(307, 262);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 19);
@@ -432,7 +434,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(307, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 19);
@@ -441,7 +443,7 @@
             // 
             // pnlBarras
             // 
-            this.pnlBarras.BackColor = System.Drawing.Color.Silver;
+            this.pnlBarras.BackColor = System.Drawing.Color.Black;
             this.pnlBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlBarras.Controls.Add(this.btnBarra20);
@@ -457,7 +459,7 @@
             // 
             // pnlMesas
             // 
-            this.pnlMesas.BackColor = System.Drawing.Color.Silver;
+            this.pnlMesas.BackColor = System.Drawing.Color.Black;
             this.pnlMesas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMesas.Controls.Add(this.btnMesa15);
             this.pnlMesas.Controls.Add(this.btnMesa11);
@@ -494,15 +496,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1035, 505);
             this.Controls.Add(this.lblUsuarioLogueado);
             this.Controls.Add(this.pnlMesasBarras);
             this.Controls.Add(this.pnlOpciones);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MenuPrincipal";
+            this.Text = "Menu Principal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.pnlOpciones.ResumeLayout(false);

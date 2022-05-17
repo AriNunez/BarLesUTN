@@ -33,7 +33,42 @@ namespace UI
             }
             this.usuarioLogueado = usuarioLogueado;
         }
+        private void FormMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            SetBienvenidoUsuario();
+            SetDisponibilidadMesas();
+            
+            if(usuarioLogueado is not null)
+            {
+                btnEmpleados.Visible = usuarioLogueado.EsAdmin;
+                btnSinAsignar.Visible = usuarioLogueado.EsAdmin;
 
+                if(usuarioLogueado.EsAdmin)
+                {
+                    pnlOpciones.BackColor = Color.Goldenrod;
+                }
+                else
+                {
+                    pnlOpciones.BackColor = Color.DodgerBlue;
+                }
+            }
+
+        }
+        private void btnMesa1_Click(object sender, EventArgs e)
+        {
+            Button botonAux = (Button)sender;
+
+            foreach (KeyValuePair<int, Button> item in listaBotones)
+            {
+                if (item.Value == botonAux)
+                {
+                    MessageBox.Show($"Mesa: {item.Key}");
+                    FormVenta frmVenta = new FormVenta(usuarioLogueado, item.Key,this);
+                    frmVenta.Show();
+                }
+
+            }
+        }
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -52,53 +87,18 @@ namespace UI
             }
         }
 
-        private void btnMesa1_Click(object sender, EventArgs e)
+        private void SetBienvenidoUsuario()
         {
-            Button botonAux = (Button)sender;
-
-            foreach (KeyValuePair<int, Button> item in listaBotones)
-            {
-                if(item.Value == botonAux)
-                {
-                    MessageBox.Show($"Mesa: {item.Key}");
-                }
-
-            }
+            lblUsuarioLogueado.Text = String.Empty;
+            lblUsuarioLogueado.Text = $"Bienvenido {usuarioLogueado.Nombre}";
         }
-
-        private void RelacionarMesasYBotones()
-        {
-            listaBotones.Add(1,btnMesa1);
-            listaBotones.Add(2,btnMesa2);
-            listaBotones.Add(3,btnMesa3);
-            listaBotones.Add(4,btnMesa4);
-            listaBotones.Add(5,btnMesa5);
-            listaBotones.Add(6,btnMesa6);
-            listaBotones.Add(7,btnMesa7);
-            listaBotones.Add(8,btnMesa8);
-            listaBotones.Add(9,btnMesa9);
-            listaBotones.Add(10,btnMesa10);
-            listaBotones.Add(11,btnMesa11);
-            listaBotones.Add(12,btnMesa12);
-            listaBotones.Add(13,btnMesa13);
-            listaBotones.Add(14,btnMesa14);
-            listaBotones.Add(15,btnMesa15);
-            listaBotones.Add(16,btnBarra16);
-            listaBotones.Add(17,btnBarra17);
-            listaBotones.Add(18,btnBarra18);
-            listaBotones.Add(19,btnBarra19);
-            listaBotones.Add(20,btnBarra20);
-
-
-        }
-
-        private void ObtenerDisponibilidadMesas()
+        public void SetDisponibilidadMesas()
         {
             disponibilidadMesas = Bar.EstadoMesas();
 
-            foreach (KeyValuePair<int,bool> item in disponibilidadMesas)
+            foreach (KeyValuePair<int, bool> item in disponibilidadMesas)
             {
-                if(item.Value == true)
+                if (item.Value == true)
                 {
                     listaBotones[item.Key].BackColor = Color.Red;
                 }
@@ -108,34 +108,34 @@ namespace UI
                 }
             }
         }
-
-        private void FormMenuPrincipal_Load(object sender, EventArgs e)
+        private void RelacionarMesasYBotones()
         {
-            SetBienvenidoUsuario();
-            ObtenerDisponibilidadMesas();
-            
-            if(usuarioLogueado is not null)
-            {
-                btnEmpleados.Visible = usuarioLogueado.EsAdmin;
-                btnSinAsignar.Visible = usuarioLogueado.EsAdmin;
-
-                if(usuarioLogueado.EsAdmin)
-                {
-                    pnlOpciones.BackColor = Color.Goldenrod;
-                }
-                else
-                {
-                    pnlOpciones.BackColor = Color.DodgerBlue;
-                }
-            }
-
+            listaBotones.Add(1, btnMesa1);
+            listaBotones.Add(2, btnMesa2);
+            listaBotones.Add(3, btnMesa3);
+            listaBotones.Add(4, btnMesa4);
+            listaBotones.Add(5, btnMesa5);
+            listaBotones.Add(6, btnMesa6);
+            listaBotones.Add(7, btnMesa7);
+            listaBotones.Add(8, btnMesa8);
+            listaBotones.Add(9, btnMesa9);
+            listaBotones.Add(10, btnMesa10);
+            listaBotones.Add(11, btnMesa11);
+            listaBotones.Add(12, btnMesa12);
+            listaBotones.Add(13, btnMesa13);
+            listaBotones.Add(14, btnMesa14);
+            listaBotones.Add(15, btnMesa15);
+            listaBotones.Add(16, btnBarra16);
+            listaBotones.Add(17, btnBarra17);
+            listaBotones.Add(18, btnBarra18);
+            listaBotones.Add(19, btnBarra19);
+            listaBotones.Add(20, btnBarra20);
         }
 
-        private void SetBienvenidoUsuario()
+        private void bntInventario_Click(object sender, EventArgs e)
         {
-            lblUsuarioLogueado.Text = String.Empty;
-            lblUsuarioLogueado.Text = $"Bienvenido {usuarioLogueado.Nombre}...";
+            FormInventario frmInventario = new FormInventario(usuarioLogueado);
+            frmInventario.Show();
         }
-
     }
 }

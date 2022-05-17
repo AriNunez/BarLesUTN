@@ -13,13 +13,15 @@ namespace Entidades
         protected string descripcion;
         protected decimal precioUnitario;
 
-        protected int Id { get { return id; } }
-        protected string Descripcion { get { return descripcion; } }
-        protected decimal PrecioUnitario { get { return precioUnitario; } }
+        public int Id { get { return id; } }
+        public string Descripcion { get { return descripcion; } }
+        public decimal PrecioUnitario { get { return precioUnitario; } }
+
+        public abstract string Formato { get; }
 
         static Producto()
         {
-            idAutoincremental = 0;
+            idAutoincremental = 1;
         }
 
         private Producto()
@@ -43,6 +45,24 @@ namespace Entidades
         private static int GenerarID()
         {
             return idAutoincremental++;
+        }
+
+        public static bool operator ==(Producto p1,Producto p2)
+        {
+            if(p1 is not null && p2 is not null)
+            {
+                if(p1.Id == p2.Id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool operator !=(Producto p1,Producto p2)
+        {
+            return !(p1 == p2);
         }
     }
 }

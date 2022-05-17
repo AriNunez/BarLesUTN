@@ -29,6 +29,16 @@ namespace Entidades
             get { return esBarra; }
         }
 
+        public decimal CostoTotalDeMesa
+        {
+            get { return cliente.CostoTotal; }
+        }
+
+        public Dictionary<Producto, int> Pedido
+        {
+            get { return cliente.Pedido; }
+        }
+
         public Mesa(int idMesa,bool ocupada,bool esBarra)
         {
             this.idMesa = idMesa;
@@ -44,5 +54,21 @@ namespace Entidades
                 this.cliente = cliente;
             }
         }
+
+        public void QuitarCliente()
+        {
+            this.cliente = null;
+            this.ocupada = false;
+        }
+
+        public void AgregarProductoAPedido(Producto producto,int cantidad)
+        {
+            if(producto is not null && cantidad > 0)
+            {
+                cliente.CargarProductoEnPedido(producto, cantidad);
+            }
+        }
+        
+
     }
 }
