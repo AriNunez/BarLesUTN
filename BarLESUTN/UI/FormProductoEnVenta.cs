@@ -1,13 +1,7 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace UI
 {
@@ -22,7 +16,7 @@ namespace UI
             id = 0;
         }
 
-        public FormProductoEnVenta(FormInventario.EFiltro filtro,int numeroMesa) :this()
+        public FormProductoEnVenta(FormInventario.EFiltro filtro, int numeroMesa) : this()
         {
             this.filtro = filtro;
             this.numeroMesa = numeroMesa;
@@ -30,19 +24,19 @@ namespace UI
 
         private void FormProductoEnVenta_Load(object sender, EventArgs e)
         {
-            if(id == 0)
+            if (id == 0)
             {
                 FiltrarDatosParaMostrar(filtro);
                 btnModificar.Visible = false;
             }
-            
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtDescripcion.Text) && numCantidad.Value > 0)
             {
-                Bar.AgregarProductoAPedido(numeroMesa,id,(int)numCantidad.Value);
+                Bar.AgregarProductoAPedido(numeroMesa, id, (int)numCantidad.Value);
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -96,7 +90,7 @@ namespace UI
             int indiceSeleccionado;
             int idProducto;
             Producto producto;
-            Dictionary<Producto,int> listaProducto = Bar.ObtenerListaProductos();
+            Dictionary<Producto, int> listaProducto = Bar.ObtenerListaProductos();
 
             if (dtgvProductos.Rows.Count > 0 && listaProducto is not null)
             {
@@ -107,14 +101,14 @@ namespace UI
                     {
                         producto = Bar.BuscarProductoPorID(idProducto);
 
-                        if(producto is not null)
+                        if (producto is not null)
                         {
                             txtDescripcion.Text = producto.Descripcion;
                             txtPrecio.Text = producto.PrecioUnitario.ToString();
                             txtFormato.Text = producto.Formato;
                             foreach (KeyValuePair<Producto, int> item in listaProducto)
                             {
-                                if(item.Key == producto)
+                                if (item.Key == producto)
                                 {
                                     numCantidad.Maximum = item.Value;
                                     this.id = idProducto;

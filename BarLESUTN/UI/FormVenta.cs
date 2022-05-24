@@ -1,19 +1,13 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace UI
 {
     public partial class FormVenta : Form
     {
-
         private int numeroMesa;
         private Usuario usuarioLogueado;
         private FormMenuPrincipal frmMenuPrincipal;
@@ -23,7 +17,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public FormVenta(Usuario usuarioLogueado,int numeroMesa,FormMenuPrincipal frmMenuPrincipal) :this()
+        public FormVenta(Usuario usuarioLogueado, int numeroMesa, FormMenuPrincipal frmMenuPrincipal) : this()
         {
             this.usuarioLogueado = usuarioLogueado;
             this.numeroMesa = numeroMesa;
@@ -61,7 +55,6 @@ namespace UI
                 btnAgregarBebida.Visible = false;
                 btnQuitarProducto.Visible = false;
                 btnContinuar.Visible = false;
-                btnModificarCantidad.Visible = false;
                 pnlDatosCiente.Visible = false;
                 btnAsignarCliente.Visible = true;
             }
@@ -71,7 +64,6 @@ namespace UI
                 btnAgregarBebida.Visible = true;
                 btnQuitarProducto.Visible = true;
                 btnContinuar.Visible = true;
-                btnModificarCantidad.Visible = true;
                 pnlDatosCiente.Visible = true;
                 btnAsignarCliente.Visible = false;
 
@@ -112,12 +104,12 @@ namespace UI
                 costoPedido = costoPedido * 1.10M;
             }
 
-            if(chkEstacionamiento.Checked == true)
+            if (chkEstacionamiento.Checked == true)
             {
                 costoPedido += 100;
             }
-            lblCostoTotal.Text = $"Costo total {costoPedido.ToString("C")}";
-            
+            lblTotal.Text = $"{costoPedido.ToString("0,0.00")}";
+
         }
 
         private void FormVenta_FormClosing(object sender, FormClosingEventArgs e)
@@ -127,7 +119,7 @@ namespace UI
 
         private void btnAgregarComida_Click(object sender, EventArgs e)
         {
-            FormProductoEnVenta frmAgregarComida = new FormProductoEnVenta(FormInventario.EFiltro.Comida,numeroMesa);
+            FormProductoEnVenta frmAgregarComida = new FormProductoEnVenta(FormInventario.EFiltro.Comida, numeroMesa);
             DialogResult resultado = frmAgregarComida.ShowDialog();
 
             if (resultado == DialogResult.OK)
@@ -137,12 +129,35 @@ namespace UI
         }
         private void btnAgregarBebida_Click(object sender, EventArgs e)
         {
-            FormProductoEnVenta frmAgregarBebida = new FormProductoEnVenta(FormInventario.EFiltro.Bebida,numeroMesa);
+            FormProductoEnVenta frmAgregarBebida = new FormProductoEnVenta(FormInventario.EFiltro.Bebida, numeroMesa);
             DialogResult resultado = frmAgregarBebida.ShowDialog();
 
             if (resultado == DialogResult.OK)
             {
                 ActualizarDatosDeTabla();
+            }
+        }
+        private void btnQuitarProducto_Click(object sender, EventArgs e)
+        {
+            int indiceSeleccionado;
+            int idProducto;
+
+            if (dtgvPedido.Rows.Count > 0)
+            {
+                indiceSeleccionado = dtgvPedido.CurrentCell.RowIndex;
+                if (indiceSeleccionado > -1)
+                {
+                    if (int.TryParse(dtgvPedido.Rows[indiceSeleccionado].Cells[0].Value.ToString(), out idProducto))
+                    {
+                        Bar.QuitarProductoDePedido(numeroMesa, idProducto, (int)dtgvPedido.Rows[indiceSeleccionado].Cells[4].Value);
+                        dtgvPedido.Rows.RemoveAt(indiceSeleccionado);
+                        ActualizarDatosDeTabla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -153,27 +168,37 @@ namespace UI
 
         private void btnCerrarMesa_Click(object sender, EventArgs e)
         {
-            if(pnlDatosCiente.Visible == false)
+            if (pnlDatosCiente.Visible == false)
             {
                 this.Close();
             }
             else
             {
+                FormTicket frmTicket = new FormTicket(dtgvPedido, Decimal.Parse(lblTotal.Text), chkEstacionamiento.Checked, cmbMedioDePago.SelectedItem.ToString() == Cliente.EMedioDePago.Credito.ToString());
+                DialogResult resultado;
                 Bar.CerrarMesa(numeroMesa);
-                this.Close();
+
+                resultado = frmTicket.ShowDialog();
+
+                if (resultado == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
-
-
         }
 
         private void cmbMedioDePago_SelectedValueChanged(object sender, EventArgs e)
         {
+            Bar.ActualizarMedioDePago(numeroMesa, (Cliente.EMedioDePago)cmbMedioDePago.SelectedItem);
             ActualizarDatosDeTabla();
         }
 
         private void chkEstacionamiento_CheckedChanged(object sender, EventArgs e)
         {
+            Bar.ActualizarEstadoEstacionamiento(numeroMesa, chkEstacionamiento.Checked);
             ActualizarDatosDeTabla();
         }
+
+
     }
 }

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entidades;
+using System;
 using System.Windows.Forms;
-using Entidades;
 
 namespace UI
 {
@@ -28,13 +21,13 @@ namespace UI
                 Usuario usuarioLogueado = Bar.LoginUsuario(usuario, password);
                 if (usuarioLogueado is not null)
                 {
-                    FormMenuPrincipal frmMenuPrincipal = new FormMenuPrincipal(this,usuarioLogueado);
+                    FormMenuPrincipal frmMenuPrincipal = new FormMenuPrincipal(this, usuarioLogueado);
                     frmMenuPrincipal.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o password incorrectos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o password incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SetValoresVacios();
                 }
             }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVenta));
             this.lblNumeroMesa = new System.Windows.Forms.Label();
             this.chkEstacionamiento = new System.Windows.Forms.CheckBox();
             this.cmbMedioDePago = new System.Windows.Forms.ComboBox();
@@ -43,12 +44,12 @@
             this.btnContinuar = new System.Windows.Forms.Button();
             this.btnQuitarProducto = new System.Windows.Forms.Button();
             this.btnCerrarMesa = new System.Windows.Forms.Button();
-            this.lblCostoTotal = new System.Windows.Forms.Label();
+            this.lblCosto = new System.Windows.Forms.Label();
             this.pnlOpciones = new System.Windows.Forms.Panel();
             this.btnAsignarCliente = new System.Windows.Forms.Button();
-            this.btnModificarCantidad = new System.Windows.Forms.Button();
             this.pctLogo = new System.Windows.Forms.PictureBox();
             this.pnlDatosCiente = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPedido)).BeginInit();
             this.pnlOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
@@ -194,7 +195,7 @@
             this.btnContinuar.FlatAppearance.BorderSize = 0;
             this.btnContinuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContinuar.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnContinuar.Location = new System.Drawing.Point(0, 375);
+            this.btnContinuar.Location = new System.Drawing.Point(0, 315);
             this.btnContinuar.Margin = new System.Windows.Forms.Padding(0);
             this.btnContinuar.Name = "btnContinuar";
             this.btnContinuar.Size = new System.Drawing.Size(200, 60);
@@ -217,6 +218,7 @@
             this.btnQuitarProducto.TabIndex = 2;
             this.btnQuitarProducto.Text = "Quitar Producto";
             this.btnQuitarProducto.UseVisualStyleBackColor = false;
+            this.btnQuitarProducto.Click += new System.EventHandler(this.btnQuitarProducto_Click);
             // 
             // btnCerrarMesa
             // 
@@ -225,7 +227,7 @@
             this.btnCerrarMesa.FlatAppearance.BorderSize = 0;
             this.btnCerrarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarMesa.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCerrarMesa.Location = new System.Drawing.Point(0, 435);
+            this.btnCerrarMesa.Location = new System.Drawing.Point(0, 375);
             this.btnCerrarMesa.Margin = new System.Windows.Forms.Padding(0);
             this.btnCerrarMesa.Name = "btnCerrarMesa";
             this.btnCerrarMesa.Size = new System.Drawing.Size(200, 60);
@@ -234,16 +236,16 @@
             this.btnCerrarMesa.UseVisualStyleBackColor = false;
             this.btnCerrarMesa.Click += new System.EventHandler(this.btnCerrarMesa_Click);
             // 
-            // lblCostoTotal
+            // lblCosto
             // 
-            this.lblCostoTotal.AutoSize = true;
-            this.lblCostoTotal.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCostoTotal.ForeColor = System.Drawing.Color.White;
-            this.lblCostoTotal.Location = new System.Drawing.Point(349, 506);
-            this.lblCostoTotal.Name = "lblCostoTotal";
-            this.lblCostoTotal.Size = new System.Drawing.Size(90, 19);
-            this.lblCostoTotal.TabIndex = 12;
-            this.lblCostoTotal.Text = "Costo Total:";
+            this.lblCosto.AutoSize = true;
+            this.lblCosto.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCosto.ForeColor = System.Drawing.Color.White;
+            this.lblCosto.Location = new System.Drawing.Point(347, 506);
+            this.lblCosto.Name = "lblCosto";
+            this.lblCosto.Size = new System.Drawing.Size(102, 19);
+            this.lblCosto.TabIndex = 12;
+            this.lblCosto.Text = "Costo Total: $";
             // 
             // pnlOpciones
             // 
@@ -251,7 +253,6 @@
             this.pnlOpciones.Controls.Add(this.btnCerrarMesa);
             this.pnlOpciones.Controls.Add(this.btnContinuar);
             this.pnlOpciones.Controls.Add(this.btnAsignarCliente);
-            this.pnlOpciones.Controls.Add(this.btnModificarCantidad);
             this.pnlOpciones.Controls.Add(this.btnQuitarProducto);
             this.pnlOpciones.Controls.Add(this.btnAgregarBebida);
             this.pnlOpciones.Controls.Add(this.btnAgregarComida);
@@ -270,26 +271,13 @@
             this.btnAsignarCliente.FlatAppearance.BorderSize = 0;
             this.btnAsignarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAsignarCliente.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAsignarCliente.Location = new System.Drawing.Point(0, 315);
+            this.btnAsignarCliente.Location = new System.Drawing.Point(0, 255);
             this.btnAsignarCliente.Name = "btnAsignarCliente";
             this.btnAsignarCliente.Size = new System.Drawing.Size(200, 60);
             this.btnAsignarCliente.TabIndex = 4;
             this.btnAsignarCliente.Text = "Asignar Cliente";
             this.btnAsignarCliente.UseVisualStyleBackColor = false;
             this.btnAsignarCliente.Click += new System.EventHandler(this.btnAsignarCliente_Click);
-            // 
-            // btnModificarCantidad
-            // 
-            this.btnModificarCantidad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModificarCantidad.FlatAppearance.BorderSize = 0;
-            this.btnModificarCantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarCantidad.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModificarCantidad.Location = new System.Drawing.Point(0, 255);
-            this.btnModificarCantidad.Name = "btnModificarCantidad";
-            this.btnModificarCantidad.Size = new System.Drawing.Size(200, 60);
-            this.btnModificarCantidad.TabIndex = 3;
-            this.btnModificarCantidad.Text = "Modificar Cantidad de Producto";
-            this.btnModificarCantidad.UseVisualStyleBackColor = true;
             // 
             // pctLogo
             // 
@@ -304,15 +292,26 @@
             // 
             // pnlDatosCiente
             // 
+            this.pnlDatosCiente.Controls.Add(this.lblTotal);
             this.pnlDatosCiente.Controls.Add(this.chkEstacionamiento);
             this.pnlDatosCiente.Controls.Add(this.cmbMedioDePago);
             this.pnlDatosCiente.Controls.Add(this.dtgvPedido);
             this.pnlDatosCiente.Controls.Add(this.lblMedioDePago);
-            this.pnlDatosCiente.Controls.Add(this.lblCostoTotal);
+            this.pnlDatosCiente.Controls.Add(this.lblCosto);
             this.pnlDatosCiente.Location = new System.Drawing.Point(215, 12);
             this.pnlDatosCiente.Name = "pnlDatosCiente";
             this.pnlDatosCiente.Size = new System.Drawing.Size(641, 545);
             this.pnlDatosCiente.TabIndex = 14;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(455, 506);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(0, 19);
+            this.lblTotal.TabIndex = 13;
             // 
             // FormVenta
             // 
@@ -322,6 +321,9 @@
             this.ClientSize = new System.Drawing.Size(868, 600);
             this.Controls.Add(this.pnlOpciones);
             this.Controls.Add(this.pnlDatosCiente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";
@@ -348,7 +350,7 @@
         private System.Windows.Forms.Button btnContinuar;
         private System.Windows.Forms.Button btnQuitarProducto;
         private System.Windows.Forms.Button btnCerrarMesa;
-        private System.Windows.Forms.Label lblCostoTotal;
+        private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.Panel pnlOpciones;
         private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Panel pnlDatosCiente;
@@ -358,6 +360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn formato;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.Button btnModificarCantidad;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

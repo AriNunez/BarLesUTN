@@ -1,32 +1,27 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace UI
 {
     public partial class FormMenuPrincipal : Form
     {
         private FormLogin frmLogin;
-        private Dictionary<int,Button> listaBotones;
-        private Dictionary<int,bool> disponibilidadMesas;
+        private Dictionary<int, Button> listaBotones;
+        private Dictionary<int, bool> disponibilidadMesas;
         private Usuario usuarioLogueado;
 
         private FormMenuPrincipal()
         {
             InitializeComponent();
-            listaBotones = new Dictionary<int,Button>();
+            listaBotones = new Dictionary<int, Button>();
             RelacionarMesasYBotones();
-        }        
-        public FormMenuPrincipal(FormLogin form,Usuario usuarioLogueado):this()
+        }
+        public FormMenuPrincipal(FormLogin form, Usuario usuarioLogueado) : this()
         {
-            if(form is not null)
+            if (form is not null)
             {
                 frmLogin = form;
                 frmLogin.SetValoresVacios();
@@ -37,13 +32,13 @@ namespace UI
         {
             SetBienvenidoUsuario();
             SetDisponibilidadMesas();
-            
-            if(usuarioLogueado is not null)
+
+            if (usuarioLogueado is not null)
             {
                 btnEmpleados.Visible = usuarioLogueado.EsAdmin;
-                btnSinAsignar.Visible = usuarioLogueado.EsAdmin;
+                btnHistorialClientes.Visible = usuarioLogueado.EsAdmin;
 
-                if(usuarioLogueado.EsAdmin)
+                if (usuarioLogueado.EsAdmin)
                 {
                     pnlOpciones.BackColor = Color.Goldenrod;
                 }
@@ -62,8 +57,7 @@ namespace UI
             {
                 if (item.Value == botonAux)
                 {
-                    MessageBox.Show($"Mesa: {item.Key}");
-                    FormVenta frmVenta = new FormVenta(usuarioLogueado, item.Key,this);
+                    FormVenta frmVenta = new FormVenta(usuarioLogueado, item.Key, this);
                     frmVenta.Show();
                 }
 
@@ -136,6 +130,18 @@ namespace UI
         {
             FormInventario frmInventario = new FormInventario(usuarioLogueado);
             frmInventario.Show();
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            FormEmpleados frmEmpleados = new FormEmpleados(usuarioLogueado);
+            frmEmpleados.Show();
+        }
+
+        private void btnHistorialClientes_Click(object sender, EventArgs e)
+        {
+            FormHistorialClientes frmHistorialClientes = new FormHistorialClientes();
+            frmHistorialClientes.Show();
         }
     }
 }

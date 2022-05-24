@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidades
+﻿namespace Entidades
 {
     public class Mesa
     {
@@ -29,27 +23,17 @@ namespace Entidades
             get { return esBarra; }
         }
 
-        public decimal CostoTotalDeMesa
-        {
-            get { return cliente.CostoTotal; }
-        }
-
-        public Dictionary<Producto, int> Pedido
-        {
-            get { return cliente.Pedido; }
-        }
-
-        public Mesa(int idMesa,bool ocupada,bool esBarra)
+        public Mesa(int idMesa, bool ocupada, bool esBarra)
         {
             this.idMesa = idMesa;
             this.cliente = null;
             this.ocupada = ocupada;
             this.esBarra = esBarra;
         }
-        
+
         public void AsignarCliente(Cliente cliente)
         {
-            if(this.cliente is null && cliente is not null && ocupada == false)
+            if (this.cliente is null && cliente is not null && ocupada == false)
             {
                 this.cliente = cliente;
             }
@@ -60,15 +44,6 @@ namespace Entidades
             this.cliente = null;
             this.ocupada = false;
         }
-
-        public void AgregarProductoAPedido(Producto producto,int cantidad)
-        {
-            if(producto is not null && cantidad > 0)
-            {
-                cliente.CargarProductoEnPedido(producto, cantidad);
-            }
-        }
-        
 
     }
 }

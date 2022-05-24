@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidades
+﻿namespace Entidades
 {
     public abstract class Producto
     {
@@ -28,7 +22,7 @@ namespace Entidades
         {
             this.id = GenerarID();
         }
-        protected Producto(string descripcion, decimal precio):this()
+        protected Producto(string descripcion, decimal precio) : this()
         {
             this.descripcion = descripcion;
             this.precioUnitario = precio;
@@ -47,11 +41,11 @@ namespace Entidades
             return idAutoincremental++;
         }
 
-        public static bool operator ==(Producto p1,Producto p2)
+        public static bool operator ==(Producto p1, Producto p2)
         {
-            if(p1 is not null && p2 is not null)
+            if (p1 is not null && p2 is not null)
             {
-                if(p1.Id == p2.Id)
+                if (p1.Id == p2.Id)
                 {
                     return true;
                 }
@@ -60,7 +54,7 @@ namespace Entidades
             return false;
         }
 
-        public static bool operator !=(Producto p1,Producto p2)
+        public static bool operator !=(Producto p1, Producto p2)
         {
             return !(p1 == p2);
         }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -34,24 +31,24 @@ namespace Entidades
             this.esAdmin = esAdmin;
         }
 
-        public bool CheckPassword(string password)
+        public bool ComprobarPassword(string password)
         {
-            if(password is not null)
+            if (password is not null)
             {
-                if(password == this.password)
+                if (password == this.password)
                 {
                     return true;
                 }
             }
 
-            return false;   
+            return false;
         }
 
-        public bool CheckUsuario(string usuario)
+        public bool ComprobarUsuario(string usuario)
         {
-            if(usuario is not null)
+            if (usuario is not null)
             {
-                if(usuario == this.usuario)
+                if (usuario == this.usuario)
                 {
                     return true;
                 }
@@ -59,6 +56,64 @@ namespace Entidades
             return false;
         }
 
+        public static bool EsDniValido(int dni, List<Usuario> listaUsuarios)
+        {
+            if (dni > 0 && listaUsuarios is not null)
+            {
+                foreach (Usuario usuario in listaUsuarios)
+                {
+                    if (usuario.Dni == dni)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static bool EsNombreValido(string nombre)
+        {
+            char[] nombreAux = nombre.ToCharArray();
+
+            for (int i = 0; i < nombreAux.Length; i++)
+            {
+                if (!Char.IsLetter(nombreAux[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool EsUsuarioValido(string usuario)
+        {
+            char[] usuarioAux = usuario.ToCharArray();
+
+            for (int i = 0; i < usuarioAux.Length; i++)
+            {
+                if (!Char.IsLetterOrDigit(usuarioAux[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool NombreUsuarioExistente(string usuario, List<Usuario> listaUsuarios)
+        {
+            if (!string.IsNullOrEmpty(usuario) && listaUsuarios is not null)
+            {
+                foreach (Usuario item in listaUsuarios)
+                {
+                    if (item.NombreUsuario == usuario)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
 
     }
 }

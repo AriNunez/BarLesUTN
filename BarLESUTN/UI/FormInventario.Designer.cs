@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInventario));
             this.pnlOpciones = new System.Windows.Forms.Panel();
             this.btnModificarCantidad = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -157,7 +158,7 @@
             this.dtgvProductos.Location = new System.Drawing.Point(226, 75);
             this.dtgvProductos.Name = "dtgvProductos";
             this.dtgvProductos.RowTemplate.Height = 25;
-            this.dtgvProductos.Size = new System.Drawing.Size(671, 384);
+            this.dtgvProductos.Size = new System.Drawing.Size(570, 384);
             this.dtgvProductos.TabIndex = 1;
             // 
             // idProducto
@@ -210,10 +211,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(920, 468);
+            this.ClientSize = new System.Drawing.Size(813, 468);
             this.Controls.Add(this.cmbFiltro);
             this.Controls.Add(this.dtgvProductos);
             this.Controls.Add(this.pnlOpciones);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";

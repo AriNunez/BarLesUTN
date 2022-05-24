@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlOpciones = new System.Windows.Forms.Panel();
-            this.btnSinAsignar = new System.Windows.Forms.Button();
+            this.btnHistorialClientes = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.bntInventario = new System.Windows.Forms.Button();
@@ -70,7 +70,7 @@
             // pnlOpciones
             // 
             this.pnlOpciones.BackColor = System.Drawing.Color.DodgerBlue;
-            this.pnlOpciones.Controls.Add(this.btnSinAsignar);
+            this.pnlOpciones.Controls.Add(this.btnHistorialClientes);
             this.pnlOpciones.Controls.Add(this.btnEmpleados);
             this.pnlOpciones.Controls.Add(this.btnCerrarSesion);
             this.pnlOpciones.Controls.Add(this.bntInventario);
@@ -82,22 +82,23 @@
             this.pnlOpciones.Size = new System.Drawing.Size(200, 505);
             this.pnlOpciones.TabIndex = 0;
             // 
-            // btnSinAsignar
+            // btnHistorialClientes
             // 
-            this.btnSinAsignar.BackColor = System.Drawing.Color.Transparent;
-            this.btnSinAsignar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSinAsignar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnSinAsignar.FlatAppearance.BorderSize = 0;
-            this.btnSinAsignar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSinAsignar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSinAsignar.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSinAsignar.Location = new System.Drawing.Point(0, 225);
-            this.btnSinAsignar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSinAsignar.Name = "btnSinAsignar";
-            this.btnSinAsignar.Size = new System.Drawing.Size(200, 75);
-            this.btnSinAsignar.TabIndex = 4;
-            this.btnSinAsignar.Text = "Sin Asignar";
-            this.btnSinAsignar.UseVisualStyleBackColor = false;
+            this.btnHistorialClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistorialClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHistorialClientes.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnHistorialClientes.FlatAppearance.BorderSize = 0;
+            this.btnHistorialClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHistorialClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorialClientes.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHistorialClientes.Location = new System.Drawing.Point(0, 225);
+            this.btnHistorialClientes.Margin = new System.Windows.Forms.Padding(0);
+            this.btnHistorialClientes.Name = "btnHistorialClientes";
+            this.btnHistorialClientes.Size = new System.Drawing.Size(200, 75);
+            this.btnHistorialClientes.TabIndex = 4;
+            this.btnHistorialClientes.Text = "Historial Clientes";
+            this.btnHistorialClientes.UseVisualStyleBackColor = false;
+            this.btnHistorialClientes.Click += new System.EventHandler(this.btnHistorialClientes_Click);
             // 
             // btnEmpleados
             // 
@@ -115,6 +116,7 @@
             this.btnEmpleados.TabIndex = 3;
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.UseVisualStyleBackColor = false;
+            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
             // btnCerrarSesion
             // 
@@ -550,7 +552,7 @@
         private System.Windows.Forms.Button bntInventario;
         private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Button btnCerrarSesion;
-        private System.Windows.Forms.Button btnSinAsignar;
+        private System.Windows.Forms.Button btnHistorialClientes;
         private System.Windows.Forms.Button btnEmpleados;
         private System.Windows.Forms.Label lblUsuarioLogueado;
     }

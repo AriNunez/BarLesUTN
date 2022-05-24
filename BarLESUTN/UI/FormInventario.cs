@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace UI
 {
@@ -15,7 +10,7 @@ namespace UI
     {
         public enum EFiltro
         {
-            Todos,Comida,Bebida
+            Todos, Comida, Bebida
         }
 
         private Usuario usuarioLogueado;
@@ -25,7 +20,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public FormInventario(Usuario usuarioLogueado) :this()
+        public FormInventario(Usuario usuarioLogueado) : this()
         {
             this.usuarioLogueado = usuarioLogueado;
         }
@@ -67,7 +62,7 @@ namespace UI
         {
             Dictionary<Producto, int> listaProducto = Bar.ObtenerListaProductos();
 
-            if(listaProducto is not null)
+            if (listaProducto is not null)
             {
                 foreach (KeyValuePair<Producto, int> item in listaProducto)
                 {
@@ -75,7 +70,7 @@ namespace UI
                     switch (filtro)
                     {
                         case EFiltro.Comida:
-                            if(item.Key is Comida)
+                            if (item.Key is Comida)
                             {
                                 dtgvProductos.Rows[i].Cells[0].Value = item.Key.Id;
                                 dtgvProductos.Rows[i].Cells[1].Value = item.Key.Descripcion;
@@ -115,9 +110,9 @@ namespace UI
             if (dtgvProductos.Rows.Count > 0)
             {
                 indiceSeleccionado = dtgvProductos.CurrentCell.RowIndex;
-                if(indiceSeleccionado > -1)
+                if (indiceSeleccionado > -1)
                 {
-                    if(int.TryParse(dtgvProductos.Rows[indiceSeleccionado].Cells[0].Value.ToString(),out idProducto))
+                    if (int.TryParse(dtgvProductos.Rows[indiceSeleccionado].Cells[0].Value.ToString(), out idProducto))
                     {
                         Bar.QuitarProductoDeLista(idProducto);
                         dtgvProductos.Rows.RemoveAt(indiceSeleccionado);
@@ -135,7 +130,7 @@ namespace UI
             FormProductoEnInventario frmAgregarComida = new FormProductoEnInventario(EFiltro.Comida);
             DialogResult resultado = frmAgregarComida.ShowDialog();
 
-            if(resultado == DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
                 ActualizarDatosDeTabla();
             }
@@ -166,14 +161,14 @@ namespace UI
 
             if (dtgvProductos.Rows.Count > 0)
             {
-                indiceSeleccionado  = dtgvProductos.CurrentCell.RowIndex;
+                indiceSeleccionado = dtgvProductos.CurrentCell.RowIndex;
                 if (indiceSeleccionado > -1)
                 {
                     if (int.TryParse(dtgvProductos.Rows[indiceSeleccionado].Cells[0].Value.ToString(), out idProducto))
                     {
                         frmProducto = new FormProductoEnInventario(idProducto);
                         resultado = frmProducto.ShowDialog();
-                        if(resultado == DialogResult.OK)
+                        if (resultado == DialogResult.OK)
                         {
                             ActualizarDatosDeTabla();
                         }

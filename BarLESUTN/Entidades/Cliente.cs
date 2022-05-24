@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -14,20 +11,15 @@ namespace Entidades
         }
         private DateTime horaIngreso;
         private DateTime horaEgreso;
-        private bool conEstacionamiento;
-        //private EMedioDePago medioDePago; Proximo a utilizar
-        private Dictionary<Producto,int> pedido;
-        private string nombreEmpleado; // proximo a utilizar para llevar las cuentas del bar
+        private EMedioDePago medioDePago;
+        private bool conEstacionamineto;
+        private Dictionary<Producto, int> pedido;
+        private string nombreEmpleado;
 
+        #region Propiedades
         public Dictionary<Producto, int> Pedido
         {
             get { return pedido; }
-        }
-
-        private Cliente()
-        {
-            this.horaIngreso = DateTime.Now;
-            pedido = new Dictionary<Producto,int>();
         }
 
         public decimal CostoTotal
@@ -42,17 +34,59 @@ namespace Entidades
                 return costoTotal;
             }
         }
+        public string HoraEgreso
+        {
+            get { return horaEgreso.ToString(); }
+        }
 
-        public Cliente(string empleadoACargo):this()
+        public string HoraIngreso
+        {
+            get { return horaIngreso.ToString(); }
+        }
+
+        public EMedioDePago MedioDePago
+        {
+            get { return medioDePago; }
+            set { medioDePago = value; }
+        }
+
+        public bool ConEstacionamineto
+        {
+            get { return conEstacionamineto; }
+            set { conEstacionamineto = value; }
+        }
+
+        public string NombreEmpleadoACargo
+        {
+            get { return nombreEmpleado; }
+        }
+
+        #endregion
+
+        #region Constructores
+        private Cliente()
+        {
+            this.horaIngreso = DateTime.Now;
+            pedido = new Dictionary<Producto, int>();
+        }
+        public Cliente(string empleadoACargo) : this()
         {
             this.nombreEmpleado = empleadoACargo;
         }
 
-        public void CargarProductoEnPedido(Producto productoACargar,int cantidad)
+        #endregion
+
+        /// <summary>
+        /// Carga un producto y una cantidad al pedido en caso de que el pedido no tenga el producto cargado. Si el producto ya se encuentra en el
+        /// pedido, acumula las cantidades.
+        /// </summary>
+        /// <param name="productoACargar"></param>
+        /// <param name="cantidad"></param>
+        public void CargarProductoEnPedido(Producto productoACargar, int cantidad)
         {
-            if(productoACargar != null && cantidad > 0)
+            if (productoACargar != null && cantidad > 0)
             {
-                if(!pedido.ContainsKey(productoACargar))
+                if (!pedido.ContainsKey(productoACargar))
                 {
                     pedido.Add(productoACargar, cantidad);
                 }
@@ -63,7 +97,11 @@ namespace Entidades
             }
         }
 
-        public void RemoverProductoDePedido(Producto productoARemover)
+        /// <summary>
+        /// Quita un producto del pedido.
+        /// </summary>
+        /// <param name="productoARemover"></param>
+        public void QuitarProductoDePedido(Producto productoARemover)
         {
             if (productoARemover != null)
             {
@@ -71,12 +109,12 @@ namespace Entidades
             }
         }
 
-        public void ModificarCantidadDeProducto(Producto productoAModificar,int cantidad)
+        /// <summary>
+        /// Establece una hora de egreso
+        /// </summary>
+        public void EstablecerHoraDeEgreso()
         {
-            if (productoAModificar != null && cantidad > 0)
-            {
-                pedido[productoAModificar] = cantidad;
-            }
+            this.horaEgreso = DateTime.Now;
         }
 
     }
