@@ -45,5 +45,15 @@ usuario logueado.
  Puntos extras por investigación:
  El unico punto que pude desarrollar es el de cambiar el color en base al rol del usuario logueado.
   
-  
+__ Entrega final 24/05/2021 __
+
+Agregué al Form Venta la funcionalidad al boton de Quitar Producto. Tambien agregue un nuevo Form Ticket, que se muestra al momento de cerrar una mesa.
+En dicho ticket se detalla los gastos del pedido del cliente, si utiliza el estacionamiento (y su costo) y en caso de pagar con credito un recargo.
+
+El boton Empleados del Form MenuPrincipal ahora abre un nuevo form donde podremos visualizar a los usuarios dados de alta, ademas de cierta informacion vinculada
+a ellos. Tambien podremos dar de alta un nuevo usuario, detallando la informacion de este nuevo usuario en un nuevo form de alta. 
+En caso de querer borrar el usuario con el cual se este logueado no va a poder.
+
+El boton Historial Clientes del Form MenuPrincipal ahora abre un nuevo form donde podremos visualizar a los clientes que hayan sido atendidos y cobrados,
+permitiendonos visualizar algo de informacion con respecto al cliente.
  
